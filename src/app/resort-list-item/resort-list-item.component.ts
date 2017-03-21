@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
 import {Resorts} from "../resorts";
 
 @Component({
@@ -10,10 +10,14 @@ export class ResortListItemComponent implements OnInit {
 
   @Input() data:Resorts;
 
+  @Output() clicked:EventEmitter<Resorts> = new EventEmitter();
+
   constructor() { }
 
-  ngOnInit() {
-    console.log(this.data)
+  ngOnInit() { }
+
+  dispatchClick(){
+    this.clicked.emit(this.data);
   }
 
 }

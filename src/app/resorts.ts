@@ -1,13 +1,12 @@
 
 export class Resorts {
-  mainImageURL:string;
-  weatherImageURL:string;
+  id:number;
   header:string;
   text1:string;
   text2:string;
   phone:string;
-  temperatureAir:number;
-  temperatureWater:number;
-  followers:number;
-  following:number;
+  temperatureAir:string;
+  temperatureWater:string;
+  followers:string;
+  following:string;
 }

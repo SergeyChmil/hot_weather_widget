@@ -1,14 +1,14 @@
-<div class="activity-row">
+<div class="activity-row" (click)="dispatchClick()">
   <div class="activity-desc">
-    <h5>Resort Address</h5>
-    <p>Sed perspiciatis</p>
-    <p>Et harum quidem</p>
-    <h6>Tel:+1285 968 685</h6>
+    <h5>{{data.header}}</h5>
+    <p>{{data.text1}}</p>
+    <p>{{data.text2}}</p>
+    <h6>{{data.phone}}</h6>
   </div>
   <div class="activity-img">
     <ul>
-      <li><img src='src/images/res.jpg'  alt=""/></li>
-      <li><img src='src/images/r1.jpg'  alt=""/></li>
+      <li><img [src]="'src/images/r' + data.id + '.jpg'"  alt=""/></li>
+      <li><img [src]="'src/images/res' + data.id + '.jpg'"  alt=""/></li>
     </ul>
   </div>
   <div class="clear"> </div>
