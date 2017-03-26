@@ -1,13 +1,16 @@
 <div class="element">
   <div class="element-left">
-    <div class="element-bg-img"><img [src]="'src/images/' + actualResort.id + '.jpg'" alt="" class="img-responsive"> </div>
+    <div class="element-bg-img"><img [src]="actualResort | imagePathModifier:'main' " alt="" class="img-responsive">
+    </div>
     <div class="element-left-bottom">
       <div class="ele-strip">
         <ul>
-          <li><a href="#">Hotel</a></li>
-          <li><a href="#">Fishing</a></li>
-          <li><a href="#">Tours</a></li>
-          <li class="anc-bor"><a href="#">Weather</a></li>
+
+          <li *ngFor="let item of menuItems | async; let isLast = last"
+              (click)="onMenuButtonClicked(item.stars)"
+              [ngClass]="{'anc-bor': isLast}"><a href="#">{{item.title}}</a>
+          </li>
+
         </ul>
       </div>
       <div class="village">
@@ -15,16 +18,19 @@
         <span class="line"> </span>
         <div class="activity_box">
           <div class="scrollbar" id="style-2">
-            <app-resort-list-item [data] = "resortData[0]" (clicked)="onResortItemClicked($event)"></app-resort-list-item>
-            <app-resort-list-item [data] = "resortData[1]" (clicked)="onResortItemClicked($event)"></app-resort-list-item>
-            <app-resort-list-item [data] = "resortData[2]" (clicked)="onResortItemClicked($event)"></app-resort-list-item>
-            <app-resort-list-item [data] = "resortData[3]" (clicked)="onResortItemClicked($event)"></app-resort-list-item>
-            <app-resort-list-item [data] = "resortData[4]" (clicked)="onResortItemClicked($event)"></app-resort-list-item>
+
+            <app-resort-list-item class="listBackground"
+              *ngFor="let resort of resorts | async | resortsFilter:currentFilterIndex"
+              [data]=resort (clicked)="onResortItemClicked($event)">
+            </app-resort-list-item>
+
           </div>
         </div>
       </div>
     </div>
   </div>
-  <app-weather [data] = "actualResort"></app-weather>
-  <div class="clear"> </div>
+
+  <app-weather [data]="actualResort"></app-weather>
+
+  <div class="clear"></div>
 </div>

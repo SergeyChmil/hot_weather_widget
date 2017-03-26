@@ -1,6 +1,6 @@
 <div class="element-right">
   <div class="temperatur">
-    <h5>{{data.text1}}</h5>
+    <h5>{{data | weatherModifier: data.temperatureAir}}</h5>
     <span class="w-line"> </span>
     <span class="cloud"> </span>
     <h2>{{data.temperatureAir}}<sup class="degree">°</sup></h2>
@@ -8,9 +8,11 @@
   </div>
   <div class="teddy-bear">
     <div class="teddy-text">
-      <h4>{{data.text2}}</h4>
+
+      <app-stars-rate *ngFor="let star of data.stars | ngforNumber"></app-stars-rate>
+
       <span class="w-line"> </span>
-      <img [src]="'src/images/b' + data.id + '.jpg'" alt=""  class="img-responsive">
+      <img [src]="data | imagePathModifier: 'weather' " alt=""  class="img-responsive mainImage">
     </div>
     <div class="teddy-follow">
       <ul>

@@ -7,9 +7,9 @@
   </div>
   <div class="activity-img">
     <ul>
-      <li><img [src]="'src/images/r' + data.id + '.jpg'"  alt=""/></li>
-      <li><img [src]="'src/images/res' + data.id + '.jpg'"  alt=""/></li>
+      <li><img [src]=" data | imagePathModifier: 'resort-item-main' " alt=""/></li>
+      <li><img [src]=" data | imagePathModifier: 'resort-item-weather' " alt=""/></li>
     </ul>
   </div>
-  <div class="clear"> </div>
+  <div class="clear"></div>
 </div>

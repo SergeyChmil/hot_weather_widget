@@ -1,22 +1,19 @@
-import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
-import {Resorts} from "../resorts";
+import {Component, Input, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'app-resort-list-item',
   templateUrl: './resort-list-item.component.html',
-  styleUrls: ['./resort-list-item.component.css']
+  styleUrls: ['./resort-list-item.component.css'],
 })
-export class ResortListItemComponent implements OnInit {
+export class ResortListItemComponent {
 
-  @Input() data:Resorts;
+  @Input()
+  public data: Resort;
 
-  @Output() clicked:EventEmitter<Resorts> = new EventEmitter();
+  @Output()
+  public clicked: EventEmitter<Resort> = new EventEmitter();
 
-  constructor() { }
-
-  ngOnInit() { }
-
-  dispatchClick(){
+  dispatchClick() {
     this.clicked.emit(this.data);
   }
 
